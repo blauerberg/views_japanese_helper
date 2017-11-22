@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Contains views_japanese_helper.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function views_japanese_helper_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the views_japanese_helper module.
+    case 'help.page.views_japanese_helper':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Helper functions of Views for Japanese') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function views_japanese_helper_views_data_alter(array &$data) {
+
+  foreach ($data as $data_type => $data_fields) {
+    foreach ($data_fields as $fieldname => $data_field) {
+      if (isset($data_field['filter']) && $data_field['filter']['id'] === 'string') {
+        $data[$data_type][$fieldname]['filter']['id'] = 'japanese_string';
+      }
+    }
+  }
+}

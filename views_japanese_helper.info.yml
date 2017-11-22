@@ -1,0 +1,7 @@
+name: views_japanese_helper
+type: module
+description: Helper functions of Views for Japanese
+core: 8.x
+package: Custom
+dependencies:
+  - views
