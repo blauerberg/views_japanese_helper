@@ -30,8 +30,12 @@ function views_japanese_helper_views_data_alter(array &$data) {
 
   foreach ($data as $data_type => $data_fields) {
     foreach ($data_fields as $fieldname => $data_field) {
-      if (isset($data_field['filter']) && $data_field['filter']['id'] === 'string') {
-        $data[$data_type][$fieldname]['filter']['id'] = 'japanese_string';
+      if (isset($data_field['filter'])) {
+        if ($data_field['filter']['id'] === 'string') {
+          $data[$data_type][$fieldname]['filter']['id'] = 'japanese_string';
+        } else if ($data_field['filter']['id'] === 'combine') {
+          $data[$data_type][$fieldname]['filter']['id'] = 'japanese_combine';
+        }
       }
     }
   }
