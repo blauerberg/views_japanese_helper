@@ -3,5 +3,6 @@ type: module
 description: Helper functions of Views for Japanese
 core: 8.x
 package: Other
+version: 8.x-1.0-beta1
 dependencies:
   - views
